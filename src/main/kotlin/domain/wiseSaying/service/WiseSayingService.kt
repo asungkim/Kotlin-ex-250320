@@ -1,5 +1,6 @@
-package domain.wiseSaying
+package domain.wiseSaying.service
 
+import domain.wiseSaying.entity.WiseSaying
 import global.SingletonScope
 
 class WiseSayingService {

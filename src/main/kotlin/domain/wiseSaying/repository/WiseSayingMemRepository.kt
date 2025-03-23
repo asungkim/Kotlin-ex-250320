@@ -1,10 +1,12 @@
-package domain.wiseSaying
+package domain.wiseSaying.repository
 
-class WiseSayingRepository {
+import domain.wiseSaying.entity.WiseSaying
+
+class WiseSayingMemRepository: WiseSayingRepository {
     private val wiseSayingList = mutableListOf<WiseSaying>()
     private var lastId: Int = 0
 
-    fun save(wiseSaying: WiseSaying): WiseSaying {
+    override fun save(wiseSaying: WiseSaying): WiseSaying {
 
         if (wiseSaying.isNew()) {
             val new = wiseSaying.copy(id = ++lastId)
@@ -19,19 +21,19 @@ class WiseSayingRepository {
         return wiseSaying
     }
 
-    fun findAll(): MutableList<WiseSaying> {
+    override fun findAll(): MutableList<WiseSaying> {
         return wiseSayingList
     }
 
-    fun findById(id: Int): WiseSaying? {
+    override fun findById(id: Int): WiseSaying? {
         return wiseSayingList.find { it.id == id }
     }
 
-    fun delete(wiseSaying: WiseSaying) {
+    override fun delete(wiseSaying: WiseSaying) {
         wiseSayingList.remove(wiseSaying)
     }
 
-    fun clear() {
+    override fun clear() {
         wiseSayingList.clear()
         lastId = 0
     }

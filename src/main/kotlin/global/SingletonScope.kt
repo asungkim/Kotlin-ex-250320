@@ -1,13 +1,13 @@
 package global
 
 import domain.system.SystemController
-import domain.wiseSaying.WiseSayingController
-import domain.wiseSaying.WiseSayingRepository
-import domain.wiseSaying.WiseSayingService
+import domain.wiseSaying.controller.WiseSayingController
+import domain.wiseSaying.repository.WiseSayingMemRepository
+import domain.wiseSaying.service.WiseSayingService
 
 object SingletonScope {
-    val wiseSayingRepository = WiseSayingRepository()
-    val wiseSayingService = WiseSayingService()
-    val wiseSayingController = WiseSayingController()
-    val systemController = SystemController()
+    val wiseSayingRepository by lazy { WiseSayingMemRepository() }
+    val wiseSayingService by lazy { WiseSayingService() }
+    val wiseSayingController by lazy { WiseSayingController() }
+    val systemController by lazy { SystemController() }
 }

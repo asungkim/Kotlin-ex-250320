@@ -1,4 +1,4 @@
-package domain.wiseSaying
+package domain.wiseSaying.controller
 
 import global.Request
 import global.SingletonScope

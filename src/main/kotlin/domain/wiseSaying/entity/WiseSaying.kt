@@ -1,4 +1,4 @@
-package domain.wiseSaying
+package domain.wiseSaying.entity
 
 data class WiseSaying(
     val id: Int = 0,
