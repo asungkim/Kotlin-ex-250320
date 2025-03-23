@@ -1,7 +1,9 @@
 package domain.wiseSaying
 
+import global.SingletonScope
+
 class WiseSayingService {
-    private val wiseSayingRepository = WiseSayingRepository()
+    private val wiseSayingRepository = SingletonScope.wiseSayingRepository
 
     fun write(saying: String, author: String): WiseSaying {
         val wiseSaying = WiseSaying(saying = saying, author = author)

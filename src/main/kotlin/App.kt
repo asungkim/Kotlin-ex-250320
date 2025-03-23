@@ -1,12 +1,12 @@
-import domain.system.SystemController
-import domain.wiseSaying.WiseSayingController
+
 import global.Request
+import global.SingletonScope
 
 class App {
     fun run() {
 
-        val systemController = SystemController()
-        val wiseSayingController = WiseSayingController()
+        val systemController = SingletonScope.systemController
+        val wiseSayingController = SingletonScope.wiseSayingController
 
         println("== 명언 앱 ==")
         while (true) {
