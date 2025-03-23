@@ -23,7 +23,7 @@ class WiseSayingController {
         val wiseSayingList = wiseSayingService.getItems()
 
         wiseSayingList.reversed().forEach {
-            println("${it.id} / ${it.author} / ${it.saying}")
+            println("${it.id} / ${it.author} / ${it.content}")
         }
     }
 
@@ -52,7 +52,7 @@ class WiseSayingController {
 
         val wiseSaying = wiseSayingService.getItem(id)
         wiseSaying?.let {
-            println("명언(기존) : ${wiseSaying.saying}")
+            println("명언(기존) : ${wiseSaying.content}")
             print("명언: ")
             val saying = readlnOrNull() ?: ""
 

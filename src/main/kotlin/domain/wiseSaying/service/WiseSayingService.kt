@@ -7,7 +7,7 @@ class WiseSayingService {
     private val wiseSayingRepository = SingletonScope.wiseSayingFileRepository
 
     fun write(saying: String, author: String): WiseSaying {
-        val wiseSaying = WiseSaying(saying = saying, author = author)
+        val wiseSaying = WiseSaying(content = saying, author = author)
         return wiseSayingRepository.save(wiseSaying)
     }
 
@@ -24,6 +24,6 @@ class WiseSayingService {
     }
 
     fun modify(wiseSaying: WiseSaying, saying: String, author: String): WiseSaying {
-        return wiseSayingRepository.save(wiseSaying.copy(saying = saying, author = author))
+        return wiseSayingRepository.save(wiseSaying.copy(content = saying, author = author))
     }
 }

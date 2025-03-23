@@ -2,14 +2,14 @@ package domain.wiseSaying.entity
 
 data class WiseSaying(
     val id: Int = 0,
-    var saying: String,
+    var content: String,
     var author: String
 ) {
     val jsonStr: String
         get() = """
             {
                 "id":$id,
-                "saying":$saying,
+                "saying":$content,
                 "author":$author
             }
         """.trimIndent()
