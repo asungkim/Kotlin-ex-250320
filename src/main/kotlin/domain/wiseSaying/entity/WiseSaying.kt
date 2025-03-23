@@ -5,6 +5,15 @@ data class WiseSaying(
     var saying: String,
     var author: String
 ) {
+    val jsonStr: String
+        get() = """
+            {
+                "id":$id,
+                "saying":$saying,
+                "author":$author
+            }
+        """.trimIndent()
+
     fun isNew(): Boolean {
         return id == 0
     }

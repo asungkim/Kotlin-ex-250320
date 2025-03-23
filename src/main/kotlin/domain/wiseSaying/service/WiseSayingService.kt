@@ -4,14 +4,14 @@ import domain.wiseSaying.entity.WiseSaying
 import global.SingletonScope
 
 class WiseSayingService {
-    private val wiseSayingRepository = SingletonScope.wiseSayingRepository
+    private val wiseSayingRepository = SingletonScope.wiseSayingFileRepository
 
     fun write(saying: String, author: String): WiseSaying {
         val wiseSaying = WiseSaying(saying = saying, author = author)
         return wiseSayingRepository.save(wiseSaying)
     }
 
-    fun getItems(): MutableList<WiseSaying> {
+    fun getItems(): List<WiseSaying> {
         return wiseSayingRepository.findAll()
     }
 
