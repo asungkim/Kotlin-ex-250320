@@ -11,7 +11,8 @@ class WiseSayingController {
         print("작가 : ")
         val author = readlnOrNull() ?: ""
 
-        wiseSayingService.write(saying, author)
+        val wiseSaying = wiseSayingService.write(saying, author)
+        println("${wiseSaying.id}번 명언이 등록되었습니다.")
     }
 
     fun print() {
