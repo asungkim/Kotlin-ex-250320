@@ -84,4 +84,6 @@ class WiseSayingFileRepositoryTest {
         wiseSayingFileRepository.delete(w1)
         assertThat(wiseSayingFileRepository.findById(1)).isNull()
     }
+
+
 }

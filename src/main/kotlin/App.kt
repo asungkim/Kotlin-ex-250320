@@ -1,4 +1,3 @@
-
 import global.Request
 import global.SingletonScope
 
@@ -20,6 +19,7 @@ class App {
                 "목록" -> wiseSayingController.print(rq)
                 "수정" -> wiseSayingController.modify(rq)
                 "삭제" -> wiseSayingController.delete(rq)
+                "빌드" -> wiseSayingController.build()
                 "종료" -> {
                     systemController.exit()
                     break

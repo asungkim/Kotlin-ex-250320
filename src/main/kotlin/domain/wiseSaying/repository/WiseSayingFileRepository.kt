@@ -2,6 +2,7 @@ package domain.wiseSaying.repository
 
 import domain.wiseSaying.entity.WiseSaying
 import global.AppConfig
+import standard.JsonUtil
 import java.nio.file.Path
 
 class WiseSayingFileRepository : WiseSayingRepository {
@@ -43,6 +44,15 @@ class WiseSayingFileRepository : WiseSayingRepository {
 
     override fun clear() {
         tableDirPath.toFile().deleteRecursively()
+    }
+
+    fun build() {
+        val mapList = findAll().map {
+            it.toMap
+        }
+
+        val listToJson = JsonUtil.listToJson(mapList)
+        tableDirPath.resolve("data.json").toFile().writeText(listToJson)
     }
 
     fun initTable() {

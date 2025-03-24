@@ -1,6 +1,6 @@
 package domain.wiseSaying.entity
 
-import standard.Util
+import standard.JsonUtil
 
 data class WiseSaying(
     val id: Int = 0,
@@ -16,13 +16,20 @@ data class WiseSaying(
             }
         """.trimIndent()
 
+    val toMap: Map<String, Any>
+        get() = mapOf(
+            "id" to id.toString(),
+            "content" to content,
+            "author" to author
+        )
+
     fun isNew(): Boolean {
         return id == 0
     }
 
     companion object {
         fun fromJson(jsonStr: String): WiseSaying {
-            val jsonMap = Util.jsonStrToMap(jsonStr)
+            val jsonMap = JsonUtil.jsonStrToMap(jsonStr)
             val id = jsonMap["id"] as Int
             val content = jsonMap["content"] as String
             val author = jsonMap["author"] as String
@@ -30,4 +37,6 @@ data class WiseSaying(
             return WiseSaying(id, content, author)
         }
     }
+
+
 }
