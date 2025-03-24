@@ -59,4 +59,19 @@ class WiseSayingFileRepositoryTest {
         assertThat(count).isEqualTo(2)
         assertThat(result).containsExactly(w1, w2)
     }
+
+    @Test
+    fun `findById`() {
+        val w1 = wiseSayingFileRepository
+            .save(WiseSaying(content = "인생은 짧고 예술은 길다.", author = "헨리 장"))
+        val w2 = wiseSayingFileRepository
+            .save(WiseSaying(content = "내 죽음을 적에게 알리지 말라", author = "이순신"))
+
+        val v1 = wiseSayingFileRepository.findById(1)
+        val v2 = wiseSayingFileRepository.findById(3)
+
+        assertThat(v1).isNotNull
+        assertThat(v1).isEqualTo(w1)
+        assertThat(v2).isNull()
+    }
 }
