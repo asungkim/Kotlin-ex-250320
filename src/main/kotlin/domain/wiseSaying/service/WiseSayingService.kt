@@ -11,14 +11,17 @@ class WiseSayingService {
         return wiseSayingRepository.save(wiseSaying)
     }
 
-    fun getItems(keywordType: String, keyword: String): List<WiseSaying> {
+    fun getItems(keywordType: String, keyword: String, page: Int, pageSize: Int): List<WiseSaying> {
         val wiseSayings = wiseSayingRepository.findAll()
 
-        return when (keywordType) {
+        val filteredList = when (keywordType) {
             "content" -> wiseSayings.filter { it.content.contains(keyword) }
             "author" -> wiseSayings.filter { it.author.contains(keyword) }
             else -> wiseSayings
         }
+
+        val startIdx = (page - 1) * pageSize
+        return filteredList.drop(startIdx).take(pageSize)
     }
 
     fun getItem(id: Int): WiseSaying? {

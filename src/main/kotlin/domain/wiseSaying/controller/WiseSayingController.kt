@@ -19,16 +19,20 @@ class WiseSayingController {
     fun print(rq: Request) {
         val keyword = rq.paramMap["keyword"] ?: ""
         val keywordType = rq.paramMap["keywordType"] ?: ""
+        val page: Int = rq.paramMap["page"]?.toInt() ?: 1
+        val pageSize: Int = rq.paramMap["pageSize"]?.toInt() ?: 5
 
-        println("----------------------")
-        println("검색타입 : $keywordType")
-        println("검색어 : $keyword")
-        println("----------------------")
+        if (keyword != "" && keywordType != "") {
+            println("----------------------")
+            println("검색타입 : $keywordType")
+            println("검색어 : $keyword")
+            println("----------------------")
+        }
 
         println("번호 / 작가 / 명언")
         println("----------------------")
 
-        val wiseSayingList = wiseSayingService.getItems(keywordType, keyword)
+        val wiseSayingList = wiseSayingService.getItems(keywordType, keyword, page, pageSize)
         wiseSayingList.reversed().forEach {
             println("${it.id} / ${it.author} / ${it.content}")
         }

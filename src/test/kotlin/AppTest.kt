@@ -91,4 +91,18 @@ class AppTest {
         assertThat(result)
             .contains("data.json 파일의 내용이 갱신되었습니다.");
     }
+
+    @Test
+    fun `makeSampleData`() {
+        TestBot.makeSampleData(10)
+
+        val result = TestBot.run(
+            """
+                목록
+            """.trimIndent()
+        )
+
+        assertThat(result).contains("1 / ")
+        assertThat(result).contains("10 / ")
+    }
 }
