@@ -5,8 +5,6 @@ import global.AppConfig
 import java.nio.file.Path
 
 class WiseSayingFileRepository : WiseSayingRepository {
-    private var lastId: Int = 0
-
     init {
         initTable()
     }
@@ -40,7 +38,7 @@ class WiseSayingFileRepository : WiseSayingRepository {
     }
 
     override fun delete(wiseSaying: WiseSaying) {
-        TODO("Not yet implemented")
+        tableDirPath.resolve("${wiseSaying.id}.json").toFile().delete()
     }
 
     override fun clear() {

@@ -74,4 +74,14 @@ class WiseSayingFileRepositoryTest {
         assertThat(v1).isEqualTo(w1)
         assertThat(v2).isNull()
     }
+
+    @Test
+    fun `delete`() {
+        val w1 = wiseSayingFileRepository
+            .save(WiseSaying(content = "인생은 짧고 예술은 길다.", author = "헨리 장"))
+
+
+        wiseSayingFileRepository.delete(w1)
+        assertThat(wiseSayingFileRepository.findById(1)).isNull()
+    }
 }
