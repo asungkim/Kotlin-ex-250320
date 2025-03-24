@@ -17,7 +17,7 @@ class App {
 
             when (rq.actionName) {
                 "등록" -> wiseSayingController.write()
-                "목록" -> wiseSayingController.print()
+                "목록" -> wiseSayingController.print(rq)
                 "수정" -> wiseSayingController.modify(rq)
                 "삭제" -> wiseSayingController.delete(rq)
                 "종료" -> {

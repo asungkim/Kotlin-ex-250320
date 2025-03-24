@@ -45,4 +45,29 @@ class AppTest {
         assertThat(result).contains("1 / 충무공 이순신 / 나의 죽음을 적들에게 알리지 말라.")
         assertThat(result).contains("2 / 에디슨 / 천재는 99%의 노력과 1%의 영감이다.")
     }
+
+    @Test
+    fun `명언 목록(keyword)`() {
+        val result = TestBot.run(
+            """
+             등록
+             나의 죽음을 적들에게 알리지 말라.
+             충무공 이순신
+             등록
+             천재는 99%의 노력과 1%의 영감이다.
+             에디슨
+             등록
+             나는 천재다.
+             김아성
+             목록?keywordType=content&keyword=천재
+         """
+        )
+
+        println(result)
+
+        assertThat(result).contains("3 / 김아성 / 나는 천재다.")
+        assertThat(result).contains("2 / 에디슨 / 천재는 99%의 노력과 1%의 영감이다.")
+        assertThat(result).contains("검색타입 : content")
+        assertThat(result).contains("검색어 : 천재")
+    }
 }

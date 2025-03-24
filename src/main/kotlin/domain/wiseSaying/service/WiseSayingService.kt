@@ -4,15 +4,21 @@ import domain.wiseSaying.entity.WiseSaying
 import global.SingletonScope
 
 class WiseSayingService {
-    private val wiseSayingRepository = SingletonScope.wiseSayingFileRepository
+    private val wiseSayingRepository = SingletonScope.wiseSayingMemRepository
 
     fun write(saying: String, author: String): WiseSaying {
         val wiseSaying = WiseSaying(content = saying, author = author)
         return wiseSayingRepository.save(wiseSaying)
     }
 
-    fun getItems(): List<WiseSaying> {
-        return wiseSayingRepository.findAll()
+    fun getItems(keywordType: String, keyword: String): List<WiseSaying> {
+        val wiseSayings = wiseSayingRepository.findAll()
+
+        return when (keywordType) {
+            "content" -> wiseSayings.filter { it.content.contains(keyword) }
+            "author" -> wiseSayings.filter { it.author.contains(keyword) }
+            else -> wiseSayings
+        }
     }
 
     fun getItem(id: Int): WiseSaying? {
